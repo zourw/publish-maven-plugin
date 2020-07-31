@@ -1,0 +1,4 @@
+include ':lib-sample'
+include ':publish-maven-plugin'
+include ':app'
+rootProject.name = "publish-maven"

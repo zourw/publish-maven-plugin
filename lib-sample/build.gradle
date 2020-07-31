@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.mysoft.publish'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // 测试依赖库
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+    //glide
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    //retrofit
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    //okhttp
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.1.2'
+    // room
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+}
+
+publishConfig {
+    groupId = "com.mysoft.libs" // 不填写时默认为 com.mysoft.libs
+    artifactId = "lib-sample" // 不填写时默认为 module 名
+    version = "1.0.0" // 不填写时默认为 android.defaultConfig.versionName
+    pomName = ""
+    pomDescription = ""
+    pomUrl = ""
+    repoSnapshot = "http://10.5.223.107:8088/repository/maven-snapshots/" // 不填写时为默认值
+    repoRelease = "http://10.5.223.107:8088/repository/maven-releases/" // 不填写时为默认值
+    repoName = "repo_user" // 不填写时为默认值
+    repoPassword = "12345" // 不填写时为默认值
+}

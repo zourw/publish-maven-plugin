@@ -1,0 +1,23 @@
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        plugin(MavenPublication) {
+            from components.java
+
+            groupId = 'com.mysoft.tools'
+            artifactId = 'publish-maven'
+            version = '1.0.0'
+        }
+    }
+
+    repositories {
+        maven {
+            url = "http://10.5.223.107:8088/repository/maven-releases/"
+            credentials {
+                username = "repo_user"
+                password = "12345"
+            }
+        }
+    }
+}
